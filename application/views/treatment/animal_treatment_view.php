@@ -180,16 +180,16 @@
                                                     $('#transmission_table').dataTable();
 
                                                     //add transmission form validation
-                                                    $("#add_treatment_form").validate({
+                                                    $("#add_a_treatment_form").validate({
                                                         rules: {
                                                             name: "required",
-                                                            at_animal_id: "required",
+                                                           // at_animal_id: "required",
                                                             at_t_id: "required"
                                                             
                                                         },
                                                         messages: {
                                                             name: "Please enter a name",
-                                                            at_animal_id: "required",
+                                                            //at_animal_id: "required",
                                                             at_t_id: "required"
                                                         }, submitHandler: function(form)
                                                         {
