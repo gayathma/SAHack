@@ -77,8 +77,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="name">Description<span class="mandatory">*</span></label>
-                        <textarea id="name" class="form-control" name="name" type="text" placeholder="Enter Description">
+                        <label for="desc">Description</label>
+                        <textarea id="desc" class="form-control" name="desc" placeholder="Enter Description"></textarea>
                     </div>
                     
                     <div class="form-group">
@@ -119,7 +119,7 @@
 
 <!-- active selected menu -->
 <!--toastr-->
-<script src="<?php echo base_url(); ?>backend_resources/assets/toastr-master/toastr.js"></script>
+<script src="<?php echo base_url(); ?>assets/toastr-master/toastr.js"></script>
 <script type="text/javascript">
                                                 $('#vehicle_spec_menu').addClass('active');
 
@@ -133,20 +133,26 @@
                                                     //add animal_cat form validation
                                                     $("#add_animal_cat_form").validate({
                                                         rules: {
-                                                            name: "required"
-                                                        },
-                                                        messages: {
-                                                            name: "Please enter a animal_cat"
+                                                            name: "required",
+                                                            latitude: {
+                                                                required:true,
+                                                                number:true
+                                                            },
+                                                            longitude: {
+                                                                required:true,
+                                                                number:true
+                                                            }
+                                                            
                                                         }, submitHandler: function(form)
                                                         {
-                                                            $.post(site_url + '/animal_cat/add_animal_cat', $('#add_animal_cat_form').serialize(), function(msg)
+                                                            $.post(site_url + '/animal_category/add_animal_cat', $('#add_animal_cat_form').serialize(), function(msg)
                                                             {
                                                                 if (msg == 1) {
                                                                     $('#rtn_msg').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');
 
 
                                                                     add_animal_cat_form.reset();
-                                                                    window.location = site_url + '/animal_cat/manage_animal_cats';
+                                                                    window.location = site_url + '/animal_category/manage_animal_category';
 
 
                                                                 } else {
@@ -164,21 +170,21 @@
                                                 //delete animal_cats
                                                 function delete_animal_cat(id) {
 
-                                                    if (confirm('Are you sure want to delete this Transmission ?')) {
+                                                    if (confirm('Are you sure want to delete this Animal Category ?')) {
 
                                                         $.ajax({
                                                             type: "POST",
-                                                            url: site_url + '/animal_cat/delete_animal_cats',
+                                                            url: site_url + '/animal_category/delete_animal_cats',
                                                             data: "id=" + id,
                                                             success: function(msg) {
                                                                 //alert(msg);
                                                                 if (msg == 1) {
                                                                     //document.getElementById(trid).style.display='none';
                                                                     $('#animal_cat_' + id).hide();
-                                                                    toastr.success("Successfully deleted !!", "AutoVille");
+                                                                    toastr.success("Successfully deleted !!", "Zooo");
                                                                 }
                                                                 else if (msg == 2) {
-                                                                    toastr.error("Cannot be deleted as it is already assigned to others. !!", "AutoVille");
+                                                                    toastr.error("Cannot be deleted as it is already assigned to others. !!", "Zooo");
                                                                 }
                                                             }
                                                         });
@@ -186,40 +192,11 @@
                                                 }
 
 
-                                                //change publish status of animal_cat
-                                                function change_publish_status(animal_cat_id, value, element) {
-
-                                                    var condition = 'Do you want to activate this animal_cat ?';
-                                                    if (value == 0) {
-                                                        condition = 'Do you want to deactivate this animal_cat?';
-                                                    }
-
-                                                    if (confirm(condition)) {
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            url: site_url + '/animal_cat/change_publish_status',
-                                                            data: "id=" + animal_cat_id + "&value=" + value,
-                                                            success: function(msg) {
-                                                                if (msg == 1) {
-                                                                    if (value == 1) {
-                                                                        $(element).parent().html('<a class="btn btn-success btn-xs" onclick="change_publish_status(' + animal_cat_id + ',0,this)" title="click to deactivate animal_cat"><i class="fa fa-check"></i></a>');
-                                                                    } else {
-                                                                        $(element).parent().html('<a class="btn btn-warning btn-xs" onclick="change_publish_status(' + animal_cat_id + ',1,this)" title="click to activate animal_cat"><i class="fa fa-exclamation-circle"></i></a>');
-                                                                    }
-
-                                                                } else if (msg == 2) {
-                                                                    alert('Error !!');
-                                                                }
-                                                            }
-                                                        });
-                                                    }
-                                                }
-
-
-                                                //Edit Transmission
+                                               
+                                                //Edit animal_cat
                                                 function  display_edit_animal_cat_pop_up(animal_cat_id) {
 
-                                                    $.post(site_url + '/animal_cat/load_edit_animal_cat_content', {animal_cat_id: animal_cat_id}, function(msg) {
+                                                    $.post(site_url + '/animal_category/load_edit_animal_cat_content', {animal_cat_id: animal_cat_id}, function(msg) {
 
                                                         $('#animal_cat_edit_content').html('');
                                                         $('#animal_cat_edit_content').html(msg);
