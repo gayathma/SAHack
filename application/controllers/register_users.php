@@ -15,7 +15,7 @@ class Register_Users extends CI_Controller {
     function load_registration() {
 
         $parials = array('content' => 'register_user/register');
-        $this->template->load('template/main_template', $parials, $data);
+        $this->template->load('template/main_template', $parials);
     }
 
     function add_new_user() {
