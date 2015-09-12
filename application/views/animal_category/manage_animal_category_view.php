@@ -121,7 +121,7 @@
 <!--toastr-->
 <script src="<?php echo base_url(); ?>assets/toastr-master/toastr.js"></script>
 <script type="text/javascript">
-                                                $('#vehicle_spec_menu').addClass('active');
+                                               $('#advertisements_menu').addClass('active');
 
 
 

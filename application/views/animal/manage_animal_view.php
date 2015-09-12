@@ -230,7 +230,7 @@
     //delete animals
     function delete_animal(id) {
 
-        if (confirm('Are you sure want to delete this Transmission ?')) {
+        if (confirm('Are you sure want to delete this Animal ?')) {
 
             $.ajax({
                 type: "POST",
