@@ -13,3 +13,8 @@ application/logs/*
 !/application/models/animal_category/animal_category_service.php
 !/application/views/transmission/manage_transmission_view.php
 !/application/views/transmission/transmission_edit_pop_up.php
+!/application/controllers/animal_category.php
+!/application/views/animal_category/animal_category_edit_pop_up.php
+!/application/views/animal_category/manage_animal_category_view.php
+!/application/views/template/main_template.php
+!/application/views/template/menu.php

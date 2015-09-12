@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "home/index";
+$route['default_controller'] = "animal_category/manage_animal_category";
 $route['404_override'] = '';
 
 

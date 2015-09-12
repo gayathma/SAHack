@@ -3,28 +3,28 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Animal extends CI_Controller {
+class Animal_category extends CI_Controller {
 
     function __construct() {
         parent::__construct();
 
-        if (!$this->session->userdata('USER_LOGGED_IN')) {
-            redirect(site_url() . '/login/load_login');
-        } else {
-            $this->load->model('animal/animal_model');
-            $this->load->model('animal/animal_service');
+//        if (!$this->session->userdata('USER_LOGGED_IN')) {
+//            redirect(site_url() . '/login/load_login');
+//        } else {
+            $this->load->model('animal_category/animal_category_model');
+            $this->load->model('animal_category/animal_category_service');
 
-        }
+//        }
     }
 
-    function manage_animal() {
+    function manage_animal_category() {
 
-        $animal_service = new Animal_service();
+        $animal_category_service = new Animal_category_service();
 
-        $data['heading'] = "Manage Animals";
-        $data['results'] = $animal_service->get_all_animals();
+        $data['heading'] = "Manage Animal Categories";
+        $data['results'] = $animal_category_service->get_all_animals_category();
 
-        $parials = array('content' => 'animal/manage_animal_view');
+        $parials = array('content' => 'animal_category/manage_animal_category_view');
         $this->template->load('template/main_template', $parials, $data);
     }
 

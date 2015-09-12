@@ -1,6 +1,6 @@
 <?php
 
-class Animal_service extends CI_Model {
+class Animal_category_service extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -9,18 +9,17 @@ class Animal_service extends CI_Model {
 
 
 
-    function add_new_animal($animal_model) {
+    function add_new_animal_category($animal_model) {
         return $this->db->insert('animal', $animal_model);
     }
 
 
-    public function get_all_animals() {
+    public function get_all_animals_category() {
 
-        $this->db->select('transmission.*,user.name as added_by_user');
-        $this->db->from('transmission');
-        $this->db->join('user', 'user.id = transmission.added_by');
-        $this->db->where('transmission.is_deleted', '0');
-        $this->db->order_by("transmission.added_date", "desc");
+        $this->db->select('animal_category.*');
+        $this->db->from('animal_category');
+        $this->db->where('animal_category.ac_delete_index', '0');
+        $this->db->order_by("animal_category.ac_id", "desc");
         $query = $this->db->get();
         return $query->result();
     }
