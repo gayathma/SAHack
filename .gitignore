@@ -9,3 +9,7 @@ application/logs/*
 !application/logs/.htaccess
 /nbproject/private/
 *.php
+!/application/models/animal_category/animal_category_model.php
+!/application/models/animal_category/animal_category_service.php
+!/application/views/transmission/manage_transmission_view.php
+!/application/views/transmission/transmission_edit_pop_up.php
