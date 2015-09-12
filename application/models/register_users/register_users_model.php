@@ -13,6 +13,8 @@ class Register_Users_model extends CI_Model {
     var $added_date;
     var $is_published;
     var $is_deleted;
+    var $profile_pic;
+    var $updated_date;
 
     function __construct() {
         parent::__construct();
@@ -56,6 +58,14 @@ class Register_Users_model extends CI_Model {
 
     function get_email() {
         return $this->email;
+    }
+
+    function set_profile_pic($profile_pic) {
+        $this->profile_pic = $profile_pic;
+    }
+
+    function get_profile_pic() {
+        return $this->profile_pic;
     }
 
     function set_address($address) {
@@ -106,5 +116,12 @@ class Register_Users_model extends CI_Model {
         return $this->added_date;
     }
 
-}
+    function set_updated_date($updated_date) {
+        $this->updated_date = $updated_date;
+    }
 
+    function get_updated_date() {
+        return $this->updated_date;
+    }
+
+}
