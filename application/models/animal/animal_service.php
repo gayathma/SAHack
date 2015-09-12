@@ -24,6 +24,18 @@ class Animal_service extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    public function get_all_animals_for_map() {
+
+        $this->db->select('animal.*,animal_category.ac_name as category');
+        $this->db->from('animal');
+        $this->db->join('animal_category', 'animal_category.ac_id = animal.a_ac_id');
+        $this->db->where('animal.a_delete_index', '0');
+        $this->db->order_by("animal.a_id", "desc");
+        $this->db->group_by("animal.a_ac_id");
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     /*
      * This service function is to delete a animal

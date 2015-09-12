@@ -22,12 +22,12 @@ class Animal extends CI_Controller {
 
     function manage_animal() {
 
-        $animal_service = new Animal_service();
+        $animal_service          = new Animal_service();
         $animal_category_service = new Animal_category_service();
 
         $data['heading'] = "Manage Animals";
         $data['results'] = $animal_service->get_all_animals();
-        $data['cats'] = $animal_category_service->get_all_animals_category();
+        $data['cats']    = $animal_category_service->get_all_animals_category();
 
         $parials = array('content' => 'animal/manage_animal_view');
         $this->template->load('template/main_template', $parials, $data);
@@ -35,9 +35,11 @@ class Animal extends CI_Controller {
 
     function view_animal_map() {
 
+        $animal_service = new Animal_service();
+        $data['animals']=  json_encode($animal_service->get_all_animals_for_map());
 
         $parials = array('content' => 'animal/map_view');
-        $this->template->load('template/main_template', $parials);
+        $this->template->load('template/main_template', $parials,$data);
     }
 
     function add_animal() {
@@ -47,8 +49,8 @@ class Animal extends CI_Controller {
 
         $animal_model->set_a_name($this->input->post('name', TRUE));
         $animal_model->set_a_description($this->input->post('desc', TRUE));
-        $animal_model->set_a_dob(date("Y-m-d H:i:s",  strtotime($this->input->post('dob', TRUE))));
-        $animal_model->set_a_dod(date("Y-m-d H:i:s",strtotime($this->input->post('dod', TRUE))));
+        $animal_model->set_a_dob(date("Y-m-d H:i:s", strtotime($this->input->post('dob', TRUE))));
+        $animal_model->set_a_dod(date("Y-m-d H:i:s", strtotime($this->input->post('dod', TRUE))));
         $animal_model->set_a_ac_id($this->input->post('category', TRUE));
         $animal_model->set_image($this->input->post('logo_image', TRUE));
         $animal_model->set_a_delete_index('0');
@@ -113,14 +115,14 @@ class Animal extends CI_Controller {
 
         echo $animal_service->update_animal($animal_model);
     }
-    
+
     function upload_animal_image() {
 
-        $uploaddir = './uploads/animal_image/';
+        $uploaddir  = './uploads/animal_image/';
         $unique_tag = 'ani';
 
         $filename = $unique_tag . time() . '-' . basename($_FILES['uploadfile']['name']); //this is the file name
-        $file = $uploaddir . $filename; // this is the full path of the uploaded file
+        $file     = $uploaddir . $filename; // this is the full path of the uploaded file
 
         if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file)) {
             echo $filename;
