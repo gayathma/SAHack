@@ -37,4 +37,24 @@ class Animal_treatment extends CI_Controller {
         $parials = array('content' => 'treatment/animal_treatment_view');
         $this->template->load('template/main_template', $parials, $data);
     }
+    
+     function add_animal_treatment()
+     {
+          $animal_treatment_model = new Animal_treatment_model();
+        $animal_treatment_service = new Animal_treatment_service();
+
+        $animal_treatment_model->set_at_name($this->input->post('name', TRUE));
+        $animal_treatment_model->set_at_animal_id($this->input->post('at_animal_id', TRUE));
+        $animal_treatment_model->set_at_date(date('Y-m-d H:i:s'));
+        $animal_treatment_model->set_at_done_by('fsfsfsfs', TRUE);
+        $animal_treatment_model->set_at_treatment_id($this->input->post('at_t_id', TRUE));
+        
+        $animal_treatment_model->set_t_description($this->input->post('description', TRUE));
+        $animal_treatment_model->set_t_delete_index('0');
+
+        echo $animal_treatment_model->add_new_animal_treatment($animal_treatment_model);
+         
+     }
+    
+    
 }

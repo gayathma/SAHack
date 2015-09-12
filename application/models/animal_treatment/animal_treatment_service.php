@@ -19,4 +19,11 @@ class Animal_treatment_service extends CI_Model {
         return $query->result();
     }
 
+    
+    public function add_new_animal_treatment($animal_treatment_model)
+    {
+         return $this->db->insert('animal_treatment', $animal_treatment_model);
+    }
+    
+    
 }
