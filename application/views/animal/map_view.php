@@ -31,7 +31,7 @@
           var item = items[i];
 
           if (item.location.lat != undefined && item.location.lng != undefined) {
-            var icon = 'https://foursquare.com/img/categories/food/default.png';
+            var icon = 'http://icons.iconarchive.com/icons/jeanette-foshee/simpsons-02/32/Townspeople-Lion-icon.png';
 
             markers_data.push({
               lat : item.location.lat,
