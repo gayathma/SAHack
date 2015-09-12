@@ -86,7 +86,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Add New Animal Treatment Details</h4>
             </div>
-            <form id="add_treatment_form" name="add_treatment_form">
+            <form id="add_a_treatment_form" name="add_a_treatment_form">
                 <div class="modal-body">
 
                     <div class="form-group">
@@ -182,20 +182,25 @@
                                                     //add transmission form validation
                                                     $("#add_treatment_form").validate({
                                                         rules: {
-                                                            name: "required"
+                                                            name: "required",
+                                                            at_animal_id: "required",
+                                                            at_t_id: "required"
+                                                            
                                                         },
                                                         messages: {
-                                                            name: "Please enter a transmission"
+                                                            name: "Please enter a name",
+                                                            at_animal_id: "required",
+                                                            at_t_id: "required"
                                                         }, submitHandler: function(form)
                                                         {
-                                                            $.post(site_url + '/treatment/add_treatment', $('#add_treatment_form').serialize(), function(msg)
+                                                            $.post(site_url + '/animal_treatment/add_animal_treatment', $('#add_a_treatment_form').serialize(), function(msg)
                                                             {
                                                                 if (msg == 1) {
                                                                     $('#rtn_msg').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');
 
 
                                                                     add_treatment_form.reset();
-                                                                  window.location = site_url + '/treatment/index';
+                                                                  window.location = site_url + '/animal_treatment/index';
 
 
                                                                 } else {

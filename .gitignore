@@ -27,3 +27,5 @@ application/logs/*
 !/application/views/treatment/treatment_view.php
 !/application/views/treatment/treatment_edit_pop_up.php
 !/application/views/treatment/animal_treatment_view.php
+!/application/models/treatment/treatment_model.php
+!/application/models/treatment/treatment_service.php
