@@ -8,13 +8,13 @@ class Animal extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        if (!$this->session->userdata('USER_LOGGED_IN')) {
-            redirect(site_url() . '/login/load_login');
-        } else {
+//        if (!$this->session->userdata('USER_LOGGED_IN')) {
+//            redirect(site_url() . '/login/load_login');
+//        } else {
             $this->load->model('animal/animal_model');
             $this->load->model('animal/animal_service');
 
-        }
+//        }
     }
 
     function manage_animal() {
@@ -26,6 +26,13 @@ class Animal extends CI_Controller {
 
         $parials = array('content' => 'animal/manage_animal_view');
         $this->template->load('template/main_template', $parials, $data);
+    }
+    
+    function view_animal_map() {
+
+
+        $parials = array('content' => 'animal/map_view');
+        $this->template->load('template/main_template', $parials);
     }
 
     function add_transmission() {

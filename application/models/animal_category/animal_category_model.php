@@ -2,7 +2,7 @@
 
 class Animal_category_model extends CI_Model {
 
-    var $a_id;
+    var $ac_id;
     var $ac_name;
     var $ac_description;
     var $ac_latitude;
@@ -13,12 +13,12 @@ class Animal_category_model extends CI_Model {
         parent::__construct();
     }
 
-    public function get_a_id() {
-        return $this->a_id;
+    public function get_ac_id() {
+        return $this->ac_id;
     }
 
-    public function set_a_id($a_id) {
-        $this->a_id = $a_id;
+    public function set_ac_id($ac_id) {
+        $this->ac_id = $ac_id;
     }
 
     public function get_ac_name() {
