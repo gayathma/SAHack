@@ -22,3 +22,4 @@ application/logs/*
 !/application/models/animal/animal_service.php
 !/application/views/animal/animal_edit_pop_up.php
 !/application/views/animal/manage_animal_view.php
+!/application/views/animal/map_view.php

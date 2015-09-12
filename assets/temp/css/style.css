@@ -362,16 +362,17 @@ ul.sidebar-menu li a.active i {
 }
 
 a.logo {
-   background-image: url("../img/logo.png");
-width: 77px;
-height: 53px;
-background-size: cover;
-display: block;
-background-repeat: no-repeat;
-color: #2e2e2e;
-float: left;
-margin-top: 15px;
-text-transform: uppercase;
+ background-image: url("../img/logo.png");
+    width: 54px;
+    height: 53px;
+    background-size: cover;
+    display: block;
+    background-repeat: no-repeat;
+    color: #2e2e2e;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 a.logo:hover, a.logo:focus {

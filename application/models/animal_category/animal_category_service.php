@@ -10,7 +10,7 @@ class Animal_category_service extends CI_Model {
 
 
     function add_new_animal_category($animal_model) {
-        return $this->db->insert('animal', $animal_model);
+        return $this->db->insert('animal_category', $animal_model);
     }
 
 
