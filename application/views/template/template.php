@@ -10,7 +10,7 @@
         <meta name="keyword" content="AutoVille">
         <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/temp/img/favicon.html">
 
-        <title>AutoVille</title>
+        <title>ZOoOo</title>
 
         <!-- Bootstrap core CSS -->
         <link href="<?php echo base_url(); ?>assets/temp/css/bootstrap.min.css" rel="stylesheet">
