@@ -16,55 +16,45 @@ class Animal_service extends CI_Model {
 
     public function get_all_animals() {
 
-        $this->db->select('transmission.*,user.name as added_by_user');
-        $this->db->from('transmission');
-        $this->db->join('user', 'user.id = transmission.added_by');
-        $this->db->where('transmission.is_deleted', '0');
-        $this->db->order_by("transmission.added_date", "desc");
+        $this->db->select('animal.*,animal_category.ac_name as category');
+        $this->db->from('animal');
+        $this->db->join('animal_category', 'animal_category.ac_id = animal.a_ac_id');
+        $this->db->where('animal.a_delete_index', '0');
+        $this->db->order_by("animal.a_id", "desc");
         $query = $this->db->get();
         return $query->result();
     }
 
     /*
-     * This service function is to delete a transmission
+     * This service function is to delete a animal
      */
 
-    function delete_transmission($transmission_id) {
-        $data = array('is_deleted' => '1');
-        $this->db->where('id', $transmission_id);
-        return $this->db->update('transmission', $data);
+    function delete_animal($animal_id) {
+        $data = array('a_delete_index' => '1');
+        $this->db->where('a_id', $animal_id);
+        return $this->db->update('animal', $data);
     }
 
-    /*
-     * This service function is to update publish status of a transmission
-     */
+    //update animal
+    function update_animal($animal_model) {
 
-    public function publish_transmission($transmission_model) {
-        $data = array('is_published' => $transmission_model->get_is_published());
-        $this->db->update('transmission', $data, array('id' => $transmission_model->get_id()));
-        return $this->db->affected_rows();
-    }
-
-    //update transmission
-    function update_transmission($transmission_model) {
-
-        $data = array('name' => $transmission_model->get_name(),
-            'updated_date' => $transmission_model->get_updated_date(),
-            'updated_by' => $transmission_model->get_updated_by()
+        $data = array('name' => $animal_model->get_a_name(),
+            'updated_date' => $animal_model->get_updated_date(),
+            'updated_by' => $animal_model->get_updated_by()
         );
 
-        $this->db->where('id', $transmission_model->get_id());
-        return $this->db->update('transmission', $data);
+        $this->db->where('id', $animal_model->get_a_id());
+        return $this->db->update('animal', $data);
     }
 
     /*
-     * This is the service function to get transmission detail by  passing the 
-     * transmission_id as a parameter
+     * This is the service function to get animal detail by  passing the 
+     * animal_id as a parameter
      */
 
-    function get_transmission_by_id($transmission_model) {
+    function get_animal_by_id($animal_model) {
 
-        $query = $this->db->get_where('transmission', array('id' => $transmission_model->get_id(), 'is_deleted' => '0'));
+        $query = $this->db->get_where('animal', array('a_id' => $animal_model->get_a_id(), 'a_delete_index' => '0'));
         return $query->row();
     }
 
