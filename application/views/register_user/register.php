@@ -1,19 +1,62 @@
+<div class="row">
+    <div class="col-sm-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Manage Employees
+                <span class="tools pull-right">
+                    <a href="javascript:;" class="fa fa-chevron-down"></a>
+                    <a href="javascript:;" class="fa fa-times"></a>
+                </span>
+            </header>
+            <div class="panel-body">
+                <div class="adv-table">
+                    <div class="clearfix">
+                        <div class="btn-group">
+                            <a id="editable-sample_new" class="btn btn-shadow btn-primary" href="#user_add_modal" data-toggle="modal">
+                                Add New
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <table  class="display table table-bordered table-striped" id="animal_cat_table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 0;
+                            foreach ($results as $result) {
+                                ?>
+                                <tr id="animal_cat_<?php echo $result->id; ?>">
+                                    <td><?php echo++$i; ?></td>
+                                    <td><?php echo $result->name; ?></td>
+                                    <td><?php echo $result->user_type; ?></td>
+                                    <td><?php echo $result->address; ?></td>
+                                    <td><?php echo $result->email; ?></td>
 
+                                    <td align="center">
+                                        <a class="btn btn-primary btn-xs" onclick="display_edit_animal_cat_pop_up(<?php echo $result->id; ?>)"><i class="fa fa-pencil"  title="Update"></i></a>
+                                        <a class="btn btn-danger btn-xs" onclick="delete_animal_cat(<?php echo $result->id; ?>)"><i class="fa fa-trash-o " title="" title="Remove"></i></a>
 
-<header class="panel-heading">
-    Manage Users
-    <span class="tools pull-right">
-        <a href="javascript:;" class="fa fa-chevron-down"></a>
-        <a href="javascript:;" class="fa fa-times"></a>
-    </span>
-</header>
-<!-- page start-->
-<a id="editable-sample_new" class="btn btn-shadow btn-primary" href="#user_add_modal" data-toggle="modal">
-    Add New
-    <i class="fa fa-plus"></i>
-</a>
-<br>
-<br>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 
 
 
@@ -28,10 +71,7 @@
 
             <div class="modal-body">
                 <form id="add_user_type_form" name="add_user_type_form"class="form-horizontal" role="form">
-                    <script src="<?php echo base_url(); ?>backend_resources/file_upload_plugin/ajaxupload.3.5.js" type="text/javascript"></script>
-                    
-
-                    
+                   
                     <div class="form-group">
                         <label  class="col-lg-3 control-label">Name</label>
                         <div class="col-lg-8">
@@ -40,7 +80,7 @@
                     </div>
 
 
-                    
+
 
                     <div class="form-group">
                         <div class="col-lg-8">
@@ -79,7 +119,7 @@
                             <input name="contact_no_1" type="text" class="form-control" id="contact_no_1" placeholder=" ">
                         </div>
                     </div>
-                    
+
 
                     <div class="form-group">
                         <label  class="col-lg-3 control-label">Password</label>
@@ -108,127 +148,88 @@
 
 <!-- page end-->
 <!--toastr-->
-<script src="<?php echo base_url(); ?>backend_resources/assets/toastr-master/toastr.js"></script>
+<script src="<?php echo base_url(); ?>assets/toastr-master/toastr.js"></script>
 <script type="text/javascript">
 //alert('fsfsfs');                                      
-                                        //Add a new user
-                                        $('#user_menu').addClass('active open');
+    //Add a new user
+    $('#user_menu').addClass('active open');
 
-                                        $(document).ready(function () {                   
-                                            $("#add_user_type_form").validate({
-                                                rules: {
-                                                  
-                                                    name: {
-                                                        required: true
-                                                    },
-                                                    user_name: "required",
-                                                    //user_type: {
-                                                        //required: true,
-                                                        //digits: true
-                                                    //},
-                                                    email: {
-                                                        required: true,
-                                                        email: true
-                                                    },
-                                                    address: "required",
-                                                    contact_no_1: {
-                                                        required: true,
-                                                        digits: true,
-                                                        minlength: 10,
-                                                        maxlength: 10
-                                                    },
-                                                    
-                                                    password: "required",
-                                                    re_pasword: {
-                                                        required: true,
-                                                        equalTo: '#password'
-                                                    }
+    $(document).ready(function() {
+        $("#add_user_type_form").validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                user_name: "required",
+                //user_type: {
+                //required: true,
+                //digits: true
+                //},
+                email: {
+                    required: true,
+                    email: true
+                },
+                address: "required",
+                contact_no_1: {
+                    required: true,
+                    digits: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                password: "required",
+                re_pasword: {
+                    required: true,
+                    equalTo: '#password'
+                }
 
-                                                },
-                                                messages: {
-                                                 
-                                                    name: {
-                                                        required: "Please enter a name"
-                                                    },
-                                                    user_name: "Please enter a user name",
-                                                    //user_type: {
-                                                        //required: "Please enter a user type",
-                                                        //digits: "Invalid user type"
-                                                    //},
-                                                    email: {
-                                                        required: "Please enter a email",
-                                                        email: "Invalid Email"
-                                                    },
-                                                    address: "Please enter a address",
-                                                    contact_no_1: {
-                                                        required: "Please enter a phone no",
-                                                        digits: "Enter numbers only",
-                                                        maxlength: "Phone number is too long",
-                                                        minlength: "Phone number is too short"
-                                                    },
-                                               
-                                                    password: "Please enter a password",
-                                                    re_pasword:
-                                                            {
-                                                                required: "Retype the Password",
-                                                                equalTo: "Passwords are not matching"
-                                                            }
-                                                }, submitHandler: function (form) {
-                                                    $.post(site_url + '/register_users/add_new_user', $('#add_user_type_form').serialize(), function (msg)
-                                                    {
+            },
+            messages: {
+                name: {
+                    required: "Please enter a name"
+                },
+                user_name: "Please enter a user name",
+                //user_type: {
+                //required: "Please enter a user type",
+                //digits: "Invalid user type"
+                //},
+                email: {
+                    required: "Please enter a email",
+                    email: "Invalid Email"
+                },
+                address: "Please enter a address",
+                contact_no_1: {
+                    required: "Please enter a phone no",
+                    digits: "Enter numbers only",
+                    maxlength: "Phone number is too long",
+                    minlength: "Phone number is too short"
+                },
+                password: "Please enter a password",
+                re_pasword:
+                        {
+                            required: "Retype the Password",
+                            equalTo: "Passwords are not matching"
+                        }
+            }, submitHandler: function(form) {
+                $.post(site_url + '/register_users/add_new_user', $('#add_user_type_form').serialize(), function(msg)
+                {
 
-                                                        if (msg == 1) {
-                                                            $('#rtn_msg').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');
-                                                            add_user_type_form.reset();
-                                                            window.location = site_url + '/index.php';
-                                                            toastr.success("Profile Successfully Created !!", "Zoo");
+                    if (msg == 1) {
+                        $('#rtn_msg').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');
+                        add_user_type_form.reset();
+                        window.location = site_url + '/register_users/load_registration';
+                        toastr.success("Profile Successfully Created !!", "Zoo");
 
 
-                                                        } else {
-                                                            $('#rtn_msg').html('<div class="alert alert-block alert-danger fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>An error occured.</strong></div>');
-                                                        }
-                                                    });
-                                                }
-                                            }
-                                            );
-                                        });
+                    } else {
+                        $('#rtn_msg').html('<div class="alert alert-block alert-danger fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>An error occured.</strong></div>');
+                    }
+                });
+            }
+        }
+        );
+    });
 
 
 
-                                        //upload user avatar
-
-                                        $(function () {
-                                            var btnUpload = $('#upload');
-                                            var status = $('#status');
-                                            new AjaxUpload(btnUpload, {
-                                                action: '<?php echo site_url(); ?>/users/upload_user_avatar',
-                                                name: 'uploadfile',
-                                                onSubmit: function (file, ext) {
-                                                    if (!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))) {
-                                                        // extension is not allowed 
-                                                        status.text('Only JPG, PNG or GIF files are allowed');
-                                                        return false;
-                                                    }
-                                                    //status.text('Uploading...Please wait');
-                                                    //                                            $("#files").html("<i id='animate-icon' class='fa fa-spinner fa fa-2x fa-spin'></i>");
-
-                                                },
-                                                onComplete: function (file, response) {
-                                                    //On completion clear the status
-                                                    //status.text('');
-                                                    $("#files").html("");
-                                                    $("#sta").html("");
-                                                    //Add uploaded file to list
-                                                    if (response != "error") {
-                                                        $('#files').html("");
-                                                        $('<div></div>').appendTo('#files').html('<img src="<?php echo base_url(); ?>/uploads/user_avatars/' + response + '" height="120px" width="100px" /><br />');
-                                                        picFileName = response;
-                                                        document.getElementById('profile_pic').value = response;
-                                                        //                    document.getElementById('cover_image').value = response;
-                                                    } else {
-                                                        $('<div></div>').appendTo('#files').text(file).addClass('error');
-                                                    }
-                                                }
-                                            });
-                                        });
+  
 </script>
