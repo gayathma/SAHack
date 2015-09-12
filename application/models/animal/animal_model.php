@@ -4,6 +4,7 @@ class Animal_model extends CI_Model {
 
     var $a_id;
     var $a_name;
+    var $image;
     var $a_description;
     var $a_ac_id;
     var $a_dob;
@@ -28,6 +29,14 @@ class Animal_model extends CI_Model {
 
     public function set_a_name($a_name) {
         $this->a_name = $a_name;
+    }
+
+    public function get_image() {
+        return $this->image;
+    }
+
+    public function set_image($image) {
+        $this->image = $image;
     }
 
     public function get_a_description() {

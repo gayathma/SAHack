@@ -32,7 +32,10 @@ class Animal_category_service extends CI_Model {
 
     function update_animals_category($animal_model) {
 
-        $data = array('ac_name' => $animal_model->get_ac_name()
+        $data = array('ac_name' => $animal_model->get_ac_name(),
+            'ac_description' => $animal_model->get_ac_description(),
+            'ac_latitude' => $animal_model->get_ac_latitude(),
+            'ac_longitude' => $animal_model->get_ac_longitude(),
         );
 
         $this->db->where('ac_id', $animal_model->get_ac_id());

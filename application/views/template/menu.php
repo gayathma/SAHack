@@ -27,6 +27,7 @@
         <ul class="sub">
             <li><a  href="<?php echo site_url(); ?>/animal/view_animal_map">Animal Location Map</a></li>
             <li><a  href="<?php echo site_url(); ?>/animal_category/manage_animal_category">Animal Categories</a></li>
+             <li><a  href="<?php echo site_url(); ?>/animal/manage_animal">Animals</a></li>
         </ul>
     </li>
 
