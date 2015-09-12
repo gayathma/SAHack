@@ -18,3 +18,5 @@ application/logs/*
 !/application/views/animal_category/manage_animal_category_view.php
 !/application/views/template/main_template.php
 !/application/views/template/menu.php
+!/application/models/animal/animal_model.php
+!/application/models/animal/animal_service.php
