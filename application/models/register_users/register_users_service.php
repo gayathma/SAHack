@@ -6,6 +6,16 @@ class Register_Users_service extends CI_Model {
         parent::__construct();
         $this->load->model('register_users/register_users_model');
     }
+    
+    function get_user_details(){
+        
+        $this->db->select('user.*');
+        $this->db->from('user');
+        $this->db->where('user.is_deleted', '0');
+        $this->db->order_by("user.id", "desc");
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     /*
      * update user

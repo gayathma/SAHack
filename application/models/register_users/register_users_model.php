@@ -11,7 +11,6 @@ class Register_Users_model extends CI_Model {
     var $password;
     var $user_type;
     var $added_date;
-    var $is_published;
     var $is_deleted;
     var $profile_pic;
     var $updated_date;
@@ -92,13 +91,6 @@ class Register_Users_model extends CI_Model {
         return $this->password;
     }
 
-    function set_is_published($is_published) {
-        $this->is_published = $is_published;
-    }
-
-    function get_is_published() {
-        return $this->is_published;
-    }
 
     function set_is_deleted($is_deleted) {
         $this->is_deleted = $is_deleted;
