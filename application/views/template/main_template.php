@@ -367,6 +367,7 @@
         <script src="<?php echo base_url(); ?>assets/temp/js/easy-pie-chart.js"></script>
         <script src="<?php echo base_url(); ?>assets/temp/js/count.js"></script>
         <script src="<?php echo base_url(); ?>assets/temp/js/form-component.js"></script>
+         <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script src="<?php echo base_url(); ?>assets/js/gmaps.js"></script>
 
         <script>
