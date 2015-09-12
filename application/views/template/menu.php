@@ -32,7 +32,16 @@
     </li>
 
 
-
+<li class="sub-menu">
+        <a href="javascript:;" id="advertisements_menu">
+            <i class="fa fa-film"></i>
+            <span>Treatments</span>
+        </a>
+        <ul class="sub">
+            <li><a  href="<?php echo site_url(); ?>/treatment/index">Treatment Categories</a></li>
+             <li><a  href="<?php echo site_url(); ?>/animal_treatment/index">Animal Treatment Details</a></li>
+        </ul>
+    </li>
 
 </ul>
 
