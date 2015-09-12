@@ -14,14 +14,13 @@ class Register_Users_service extends CI_Model {
     function update_user($register_users_model) {
 
         $data = array(//'id'=>$register_users_model->get_id(),
-
         'name' => $register_users_model->get_name(),
         'user_name' => $register_users_model->get_user_name(),
         'email' => $register_users_model->get_email(),
         'address' => $register_users_model->get_address(),
-        '$contact_no_1' => $register_users_model->get_contact_no_1(),
-        '$user_type' => $register_users_model->get_user_type(),
-        '$password' => $register_users_model->get_password(),
+        'contact_no_1' => $register_users_model->get_contact1(),
+        'user_type' => $register_users_model->get_user_type(),
+        'password' => $register_users_model->get_password(),
         //'$is_published'=>$register_users_model->get_is_published(),
         //'$is_deleted'=>$register_users_model->get_is_deleted(),
         //'$added_date'=>$register_users_model->get_added_date(),
