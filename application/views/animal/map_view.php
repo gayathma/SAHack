@@ -86,12 +86,12 @@
         }
       });
 
-      var xhr = $.getJSON('https://coffeemaker.herokuapp.com/foursquare.json?q[near]=Lima,%20PE&q[query]=Ceviche');
+      var xhr = <?php echo $animals;?>;
 
       xhr.done(printResults);
       xhr.done(loadResults);
     });
-        
+
   
 
 </script>
