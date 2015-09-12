@@ -32,17 +32,17 @@ class Animal_category_service extends CI_Model {
 
     function update_animals_category($animal_model) {
 
-        $data = array('name' => $animal_model->get_name()
+        $data = array('ac_name' => $animal_model->get_ac_name()
         );
 
-        $this->db->where('id', $transmission_model->get_id());
-        return $this->db->update('transmission', $data);
+        $this->db->where('ac_id', $animal_model->get_ac_id());
+        return $this->db->update('animal_category', $data);
     }
 
 
-    function get_transmission_by_id($transmission_model) {
+    function get_animals_category_by_id($animal_category) {
 
-        $query = $this->db->get_where('transmission', array('id' => $transmission_model->get_id(), 'is_deleted' => '0'));
+        $query = $this->db->get_where('animal_category', array('ac_id' => $animal_category->get_ac_id(), 'ac_delete_index' => '0'));
         return $query->row();
     }
 

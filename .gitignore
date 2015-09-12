@@ -20,3 +20,5 @@ application/logs/*
 !/application/views/template/menu.php
 !/application/models/animal/animal_model.php
 !/application/models/animal/animal_service.php
+!/application/views/animal/animal_edit_pop_up.php
+!/application/views/animal/manage_animal_view.php
