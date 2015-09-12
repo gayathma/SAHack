@@ -29,43 +29,7 @@
             <div class="modal-body">
                 <form id="add_user_type_form" name="add_user_type_form"class="form-horizontal" role="form">
                     <script src="<?php echo base_url(); ?>backend_resources/file_upload_plugin/ajaxupload.3.5.js" type="text/javascript"></script>
-                    <script>
-                                        //upload user avatar
-
-                                        $(function () {
-                                            var btnUpload = $('#upload');
-                                            var status = $('#status');
-                                            new AjaxUpload(btnUpload, {
-                                                action: '<?php echo site_url(); ?>/users/upload_user_avatar',
-                                                name: 'uploadfile',
-                                                onSubmit: function (file, ext) {
-                                                    if (!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))) {
-                                                        // extension is not allowed 
-                                                        status.text('Only JPG, PNG or GIF files are allowed');
-                                                        return false;
-                                                    }
-                                                    //status.text('Uploading...Please wait');
-                                                    //                                            $("#files").html("<i id='animate-icon' class='fa fa-spinner fa fa-2x fa-spin'></i>");
-
-                                                },
-                                                onComplete: function (file, response) {
-                                                    //On completion clear the status
-                                                    //status.text('');
-                                                    $("#files").html("");
-                                                    $("#sta").html("");
-                                                    //Add uploaded file to list
-                                                    if (response != "error") {
-                                                        $('#files').html("");
-                                                        $('<div></div>').appendTo('#files').html('<img src="<?php echo base_url(); ?>/uploads/user_avatars/' + response + '" height="120px" width="100px" /><br />');
-                                                        picFileName = response;
-                                                        document.getElementById('profile_pic').value = response;
-                                                        //                    document.getElementById('cover_image').value = response;
-                                                    } else {
-                                                        $('<div></div>').appendTo('#files').text(file).addClass('error');
-                                                    }
-                                                }
-                                            });
-                                        });</script>
+                    
 
                     
                     <div class="form-group">
@@ -142,28 +106,15 @@
     </div>
 </div>
 
-
-
-<!--user Edit Modal -->
-<div class="modal fade "  id="body_type_edit_div" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" id="body_type_edit_content">
-
-        </div>
-    </div>
-</div>
 <!-- page end-->
 <!--toastr-->
 <script src="<?php echo base_url(); ?>backend_resources/assets/toastr-master/toastr.js"></script>
 <script type="text/javascript">
-
-                                        $('#user_menu').addClass('active');
-                                        //change Online status of body types
-                                        
+//alert('fsfsfs');                                      
                                         //Add a new user
                                         $('#user_menu').addClass('active open');
 
-                                        $(document).ready(function () {
+                                        $(document).ready(function () {                   
                                             $("#add_user_type_form").validate({
                                                 rules: {
                                                   
@@ -171,10 +122,10 @@
                                                         required: true
                                                     },
                                                     user_name: "required",
-                                                    user_type: {
-                                                        required: true,
-                                                        digits: true
-                                                    },
+                                                    //user_type: {
+                                                        //required: true,
+                                                        //digits: true
+                                                    //},
                                                     email: {
                                                         required: true,
                                                         email: true
@@ -200,10 +151,10 @@
                                                         required: "Please enter a name"
                                                     },
                                                     user_name: "Please enter a user name",
-                                                    user_type: {
-                                                        required: "Please enter a user type",
-                                                        digits: "Invalid user type"
-                                                    },
+                                                    //user_type: {
+                                                        //required: "Please enter a user type",
+                                                        //digits: "Invalid user type"
+                                                    //},
                                                     email: {
                                                         required: "Please enter a email",
                                                         email: "Invalid Email"
@@ -229,7 +180,7 @@
                                                         if (msg == 1) {
                                                             $('#rtn_msg').html('<div class="alert alert-success fade in"><button class="close close-sm" type="button" data-dismiss="alert"><i class="fa fa-times"></i></button><strong>Successfully saved!!.</strong></div>');
                                                             add_user_type_form.reset();
-                                                            window.location = site_url + '/users/manage_admins';
+                                                            window.location = site_url + '/index.php';
                                                             toastr.success("Profile Successfully Created !!", "Zoo");
 
 
@@ -244,4 +195,40 @@
 
 
 
+                                        //upload user avatar
+
+                                        $(function () {
+                                            var btnUpload = $('#upload');
+                                            var status = $('#status');
+                                            new AjaxUpload(btnUpload, {
+                                                action: '<?php echo site_url(); ?>/users/upload_user_avatar',
+                                                name: 'uploadfile',
+                                                onSubmit: function (file, ext) {
+                                                    if (!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))) {
+                                                        // extension is not allowed 
+                                                        status.text('Only JPG, PNG or GIF files are allowed');
+                                                        return false;
+                                                    }
+                                                    //status.text('Uploading...Please wait');
+                                                    //                                            $("#files").html("<i id='animate-icon' class='fa fa-spinner fa fa-2x fa-spin'></i>");
+
+                                                },
+                                                onComplete: function (file, response) {
+                                                    //On completion clear the status
+                                                    //status.text('');
+                                                    $("#files").html("");
+                                                    $("#sta").html("");
+                                                    //Add uploaded file to list
+                                                    if (response != "error") {
+                                                        $('#files').html("");
+                                                        $('<div></div>').appendTo('#files').html('<img src="<?php echo base_url(); ?>/uploads/user_avatars/' + response + '" height="120px" width="100px" /><br />');
+                                                        picFileName = response;
+                                                        document.getElementById('profile_pic').value = response;
+                                                        //                    document.getElementById('cover_image').value = response;
+                                                    } else {
+                                                        $('<div></div>').appendTo('#files').text(file).addClass('error');
+                                                    }
+                                                }
+                                            });
+                                        });
 </script>
